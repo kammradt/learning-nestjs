@@ -15,5 +15,5 @@
 ## Stay in touch 👨🏻‍💻
 
 - Author - [Vinicius Kammradt](https://kammradt.now.sh)
-- Twitter - [@nestframework](https://twitter.com/kammzinho)
+- Twitter - [@kammzinho](https://twitter.com/kammzinho)
 
