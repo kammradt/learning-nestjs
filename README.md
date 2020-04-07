@@ -15,7 +15,7 @@
 
 ## Sections
 
-[X] Basic structure to perform CRUD ([this branch](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
+- [X] Basic structure to perform CRUD ([this branch](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
 
 
 ## Stay in touch 👨🏻‍💻
