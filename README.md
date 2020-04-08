@@ -16,6 +16,7 @@
 ## Sections
 
 - [X] Basic structure to perform CRUD ([this tag](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
+- [X] Basic usage of pipes and validation on DTOs ([this tag](https://github.com/kammradt/learning-nestjs/tree/using-pipes-and-validation))   
 
 
 ## Stay in touch 👨🏻‍💻
