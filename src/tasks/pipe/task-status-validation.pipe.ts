@@ -3,12 +3,6 @@ import { TaskStatus } from '../task.model';
 
 
 export class TaskStatusValidationPipe implements PipeTransform {
-  readonly allowed: TaskStatus[] = [
-    TaskStatus.OPEN,
-    TaskStatus.DONE,
-    TaskStatus.IN_PROGRESS,
-  ];
-
   transform(value: any) {
     if (!this.isValid(value)) {
       throw new BadRequestException(`'${value}' is not a valid status`);
@@ -17,7 +11,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
   }
 
   private isValid(status: any): boolean {
-    return this.allowed.includes(status.toUpperCase());
+    return Object.keys(TaskStatus).includes(status.toUpperCase());
   }
 
 }
