@@ -12,6 +12,12 @@
 > Hi there!
 > I will update this repo with new information as soon as I build something cool 😅
 
+
+## Sections
+
+- [X] Basic structure to perform CRUD ([this tag](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
+
+
 ## Stay in touch 👨🏻‍💻
 
 - Author - [Vinicius Kammradt](https://kammradt.now.sh)
