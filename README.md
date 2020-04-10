@@ -13,13 +13,18 @@
 > I will update this repo with new information as soon as I build something cool 😅
 
 
-## Sections
+## Sections 🤹🏻‍♂️
 
 - [X] Basic structure to perform CRUD ([this tag](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
 - [X] Basic usage of pipes and validation on DTOs ([this tag](https://github.com/kammradt/learning-nestjs/tree/using-pipes-and-validation))   
 
 
-## Stay in touch 👨🏻‍💻
+## Useful links 🔗
+
+- `class-validator` Annotations can be found [here](https://github.com/typestack/class-validator#validation-decorators)
+- `TypeORM` [here](https://typeorm.io/)
+
+## Stay in touch 🤗 👨🏻‍💻
 
 - Author - [Vinicius Kammradt](https://kammradt.now.sh)
 - Twitter - [@kammzinho](https://twitter.com/kammzinho)
