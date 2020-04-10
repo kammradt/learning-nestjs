@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { TaskRepository } from './task.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
+import { TaskRequest } from './dto/task-request';
 
 @Injectable()
 export class TasksService {
@@ -47,20 +48,10 @@ export class TasksService {
     return found;
   }
 
-  //
-  // create(taskRequest: TaskRequest): Task {
-  //   const { title, description } = taskRequest;
-  //
-  //   const task: Task = {
-  //     id: uuid(),
-  //     title, description,
-  //     status: TaskStatus.OPEN,
-  //   };
-  //
-  //   this.tasks.push(task);
-  //   return task;
-  // }
-  //
+  create(taskRequest: TaskRequest): Promise<Task> {
+    return this.taskRepository.persist(taskRequest);
+  }
+
   // delete(id: string): void {
   //   const found = this.byId(id);
   //   this.tasks = this.tasks.filter(t => t.id !== found.id);
