@@ -24,8 +24,6 @@ export class TasksController {
 
   @Get()
   all(@Query() taskFilter: TaskFilteredRequest): Promise<Task[]> {
-    console.log('controller')
-    console.log(taskFilter)
     return this.tasksService.all(taskFilter);
   }
 
