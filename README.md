@@ -24,6 +24,8 @@
 - `class-validator` Annotations can be found [here](https://github.com/typestack/class-validator#validation-decorators)
 - `TypeORM` [here](https://typeorm.io/)
 - `queryBuilder` by `TypeORM` [here](https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md)
+- `queryBuilder with find { }` [here](https://github.com/typeorm/typeorm/blob/master/docs/find-options.md)
+
 ## Stay in touch 🤗 👨🏻‍💻
 
 - Author - [Vinicius Kammradt](https://kammradt.now.sh)
