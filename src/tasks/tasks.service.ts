@@ -41,13 +41,13 @@ export class TasksService {
   //
 
   async byId(id: string): Promise<Task> {
-    const found = await this.taskRepository.findOne(id);
+    const task = await this.taskRepository.findOne(id);
 
-    if (!found) {
+    if (!task) {
       throw new NotFoundException();
     }
 
-    return found;
+    return task;
   }
 
   create(taskRequest: TaskRequest): Promise<Task> {
