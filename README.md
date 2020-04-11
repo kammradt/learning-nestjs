@@ -17,13 +17,13 @@
 
 - [X] Basic structure to perform CRUD ([this tag](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
 - [X] Basic usage of pipes and validation on DTOs ([this tag](https://github.com/kammradt/learning-nestjs/tree/using-pipes-and-validation))   
-
+- [X] Using persistence and queryBuilder([this tag](https://github.com/kammradt/learning-nestjs/tree/persistence-and-query-builder))
 
 ## Useful links 🔗
 
 - `class-validator` Annotations can be found [here](https://github.com/typestack/class-validator#validation-decorators)
 - `TypeORM` [here](https://typeorm.io/)
-
+- `queryBuilder` by `TypeORM` [here](https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md)
 ## Stay in touch 🤗 👨🏻‍💻
 
 - Author - [Vinicius Kammradt](https://kammradt.now.sh)
