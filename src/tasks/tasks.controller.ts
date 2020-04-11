@@ -15,17 +15,17 @@ import { Task } from './task.entity';
 import { TaskRequest } from './dto/task-request';
 import { TaskStatusValidationPipe } from './pipe/task-status-validation.pipe';
 import { TaskStatus } from './task-status.enum';
+import { TaskFilteredRequest } from './dto/task-filtered-request';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private tasksService: TasksService) {
   }
 
-  // @Get()
-  // all(@Query(ValidationPipe) filterDTO: TaskFilteredRequest): Task[] {
-  //   return this.tasksService.filtered(filterDTO);
-  // }
-  //
+  @Get()
+  all(@Query(ValidationPipe) taskFilter: TaskFilteredRequest): Promise<Task[]> {
+    return this.tasksService.all(taskFilter);
+  }
 
   @Get('/:id')
   byId(@Param('id', ParseUUIDPipe) id: string): Promise<Task> {
