@@ -52,11 +52,14 @@ export class TasksService {
     return this.taskRepository.persist(taskRequest);
   }
 
-  // delete(id: string): void {
-  //   const found = this.byId(id);
-  //   this.tasks = this.tasks.filter(t => t.id !== found.id);
-  // }
-  //
+  async delete(id: string): Promise<void> {
+    const result = await this.taskRepository.delete(id)
+    if (!result.affected) {
+      throw new NotFoundException();
+    }
+  }
+
+
   // updateStatus(id: string, status: TaskStatus): Task {
   //   const task: Task = this.byId(id);
   //   task.status = TaskStatus[status];
