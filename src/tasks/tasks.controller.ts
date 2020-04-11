@@ -23,27 +23,28 @@ export class TasksController {
   }
 
   @Get()
-  all(@Query(ValidationPipe) taskFilter: TaskFilteredRequest): Promise<Task[]> {
+  all(@Query() taskFilter: TaskFilteredRequest): Promise<Task[]> {
+    console.log('controller')
+    console.log(taskFilter)
     return this.tasksService.all(taskFilter);
   }
 
-  @Get('/:id')
+  @Get(':id')
   byId(@Param('id', ParseUUIDPipe) id: string): Promise<Task> {
     return this.tasksService.byId(id);
   }
 
   @Post()
-  @UsePipes(ValidationPipe)
   create(@Body() taskRequest: TaskRequest): Promise<Task> {
     return this.tasksService.create(taskRequest);
   }
 
-  @Delete('/:id')
+  @Delete(':id')
   delete(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
     return this.tasksService.delete(id);
   }
 
-  @Patch('/:id/status')
+  @Patch(':id/status')
   updateStatus(
     @Param('id', ParseUUIDPipe) id: string,
     @Body('status', TaskStatusValidationPipe) status: TaskStatus,
