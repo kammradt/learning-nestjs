@@ -11,7 +11,7 @@ export class AuthService {
   }
 
   async signUp(authRequest: AuthRequest): Promise<void> {
-    return this.userRepository.signUp(authRequest);
+    return this.userRepository.persist(authRequest);
   }
 
 }

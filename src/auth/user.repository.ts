@@ -4,7 +4,7 @@ import { AuthRequest } from './dto/auth-request';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-  async signUp(authRequest: AuthRequest): Promise<void> {
+  async persist(authRequest: AuthRequest): Promise<void> {
     const { username, password } = authRequest;
 
     const user = new User();
