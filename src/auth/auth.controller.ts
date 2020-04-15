@@ -11,4 +11,10 @@ export class AuthController {
   signUp(@Body() authRequest: AuthRequest): Promise<void> {
     return this.authService.signUp(authRequest);
   }
+
+  @Post('signin')
+  signIn(@Body() authRequest: AuthRequest): Promise<void> {
+    return this.authService.signIn(authRequest);
+  }
+
 }

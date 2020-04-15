@@ -14,4 +14,8 @@ export class AuthService {
     return this.userRepository.persist(authRequest);
   }
 
+  async signIn(authRequest: AuthRequest) {
+    const result = await this.userRepository.validatePassword(authRequest)
+  }
+
 }
