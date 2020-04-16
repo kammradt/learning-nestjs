@@ -2,7 +2,6 @@ import { EntityRepository, Repository } from 'typeorm';
 import { User } from './user.entity';
 import { AuthRequest } from './dto/auth-request';
 import * as bcrypt from 'bcryptjs';
-import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 
 @EntityRepository(User)
@@ -19,12 +18,10 @@ export class UserRepository extends Repository<User> {
   }
 
   async findByUsername(username: string): Promise<User> {
-    const user = await this.findOne({
-      username
-    })
+    const user = await this.findOne({ username });
 
     if (!user) {
-      throw new NotFoundException()
+      throw new NotFoundException();
     }
 
     return user;
@@ -32,10 +29,10 @@ export class UserRepository extends Repository<User> {
 
   async validatePassword(authRequest: AuthRequest): Promise<string> {
     const { username, password } = authRequest;
-    const user = await this.findByUsername(username)
+    const user = await this.findByUsername(username);
 
     if (!await user.hasCorrectPassword(password)) {
-      throw new UnauthorizedException()
+      throw new UnauthorizedException();
     }
 
     return user.username;
