@@ -18,6 +18,7 @@
 - [X] Basic structure to perform CRUD ([this tag](https://github.com/kammradt/learning-nestjs/tree/crud-with-fake-data))   
 - [X] Basic usage of pipes and validation on DTOs ([this tag](https://github.com/kammradt/learning-nestjs/tree/using-pipes-and-validation))   
 - [X] Using persistence and queryBuilder([this tag](https://github.com/kammradt/learning-nestjs/tree/persistence-and-query-builder))
+- [X] Adding basic Jwt Authentication ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-basic-auth))
 
 ## Useful links 🔗
 
