@@ -15,8 +15,8 @@ export class TasksService {
   ) {
   }
 
-  async all(taskFilter: TaskFilteredRequest): Promise<Task[]> {
-    return this.taskRepository.all(taskFilter);
+  async all(taskFilter: TaskFilteredRequest, user: User): Promise<Task[]> {
+    return this.taskRepository.all(taskFilter, user);
   }
 
   async byId(id: string): Promise<Task> {

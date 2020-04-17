@@ -16,8 +16,10 @@ export class TasksController {
   }
 
   @Get()
-  all(@Query() taskFilter: TaskFilteredRequest): Promise<Task[]> {
-    return this.tasksService.all(taskFilter);
+  all(
+    @Query() taskFilter: TaskFilteredRequest,
+    @GetUser() user: User): Promise<Task[]> {
+    return this.tasksService.all(taskFilter, user);
   }
 
   @Get(':id')
