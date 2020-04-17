@@ -3,6 +3,7 @@ import { TaskStatus } from './task-status.enum';
 import { TaskRequest } from './dto/task-request';
 import { Task } from './task.entity';
 import { TaskFilteredRequest } from './dto/task-filtered-request';
+import { User } from 'src/auth/user.entity';
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
@@ -24,13 +25,14 @@ export class TaskRepository extends Repository<Task> {
     return await query.getMany();
   }
 
-  async persist(taskRequest: TaskRequest): Promise<Task> {
+  async persist(taskRequest: TaskRequest, user: User): Promise<Task> {
     const { title, description } = taskRequest;
 
     const task = new Task();
     task.title = title;
     task.description = description;
     task.status = TaskStatus.OPEN;
+    task.user = user;
     await task.save();
 
     return task;
