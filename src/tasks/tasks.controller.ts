@@ -39,16 +39,20 @@ export class TasksController {
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
-    return this.tasksService.delete(id);
+  delete(
+    @Param('id', ParseUUIDPipe) id: string,
+    @GetUser() user: User
+  ): Promise<void> {
+    return this.tasksService.delete(id, user);
   }
 
   @Patch(':id/status')
   updateStatus(
     @Param('id', ParseUUIDPipe) id: string,
     @Body('status', TaskStatusValidationPipe) status: TaskStatus,
+    @GetUser() user: User
   ): Promise<Task> {
-    return this.tasksService.updateStatus(id, status);
+    return this.tasksService.updateStatus(id, status, user);
   }
 
 }
