@@ -1,4 +1,15 @@
-import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Post, Query, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get, Logger,
+  Param,
+  ParseUUIDPipe,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Task } from './task.entity';
 import { TaskRequest } from './dto/task-request';
@@ -12,8 +23,9 @@ import { GetUser } from 'src/auth/get-user.decorator';
 @UseGuards(AuthGuard())
 @Controller('tasks')
 export class TasksController {
-  constructor(private tasksService: TasksService) {
-  }
+  private logger = new Logger('TasksController');
+
+  constructor(private tasksService: TasksService) {}
 
   @Get()
   all(
@@ -35,6 +47,7 @@ export class TasksController {
     @Body() taskRequest: TaskRequest,
     @GetUser() user: User
   ): Promise<Task> {
+    this.logger.log(`User: [${user.username}] creating a Task with data: ${JSON.stringify(taskRequest)}`)
     return this.tasksService.create(taskRequest, user);
   }
 
@@ -43,6 +56,7 @@ export class TasksController {
     @Param('id', ParseUUIDPipe) id: string,
     @GetUser() user: User
   ): Promise<void> {
+    this.logger.log(`User: [${user.username}] deleting a Task with id: ${id}`)
     return this.tasksService.delete(id, user);
   }
 
@@ -52,6 +66,7 @@ export class TasksController {
     @Body('status', TaskStatusValidationPipe) status: TaskStatus,
     @GetUser() user: User
   ): Promise<Task> {
+    this.logger.log(`User: [${user.username}] updating a Task with id: ${id} to status: ${status}`)
     return this.tasksService.updateStatus(id, status, user);
   }
 
