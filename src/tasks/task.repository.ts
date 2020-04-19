@@ -3,11 +3,12 @@ import { TaskStatus } from './task-status.enum';
 import { TaskRequest } from './dto/task-request';
 import { Task } from './task.entity';
 import { TaskFilteredRequest } from './dto/task-filtered-request';
+import { User } from 'src/auth/user.entity';
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
 
-  async all(taskFilter: TaskFilteredRequest): Promise<Task[]> {
+  async all(taskFilter: TaskFilteredRequest, user: User): Promise<Task[]> {
     const { status, search } = taskFilter;
     const query = this.createQueryBuilder('task');
 
@@ -21,17 +22,23 @@ export class TaskRepository extends Repository<Task> {
       );
     }
 
+    query.andWhere('task.userId = :userId', {userId: user.id})
+
     return await query.getMany();
   }
 
-  async persist(taskRequest: TaskRequest): Promise<Task> {
+  async persist(taskRequest: TaskRequest, user: User): Promise<Task> {
     const { title, description } = taskRequest;
 
     const task = new Task();
     task.title = title;
     task.description = description;
     task.status = TaskStatus.OPEN;
+    task.user = user;
     await task.save();
+
+    delete task.user
+    delete task.userId
 
     return task;
   }
