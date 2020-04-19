@@ -8,7 +8,7 @@ import { InternalServerErrorException, Logger } from '@nestjs/common';
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
-  private logger = new Logger('TaskRepository')
+  private logger = new Logger('TaskRepository');
 
   async all(taskFilter: TaskFilteredRequest, user: User): Promise<Task[]> {
     const { status, search } = taskFilter;
@@ -24,14 +24,14 @@ export class TaskRepository extends Repository<Task> {
       );
     }
 
-    query.andWhere('task.userId = :userId', {userId: user.id})
+    query.andWhere('task.userId = :userId', { userId: user.id });
 
     try {
       return await query.getMany();
     } catch (e) {
-      const message = `Could now retrieve tasks from user: [${user.username}]`
-      this.logger.error(message)
-      throw new InternalServerErrorException(message)
+      const message = `Could now retrieve tasks from user: [${user.username}]`;
+      this.logger.error(message);
+      throw new InternalServerErrorException(message);
     }
 
   }
@@ -47,18 +47,16 @@ export class TaskRepository extends Repository<Task> {
 
     try {
       await task.save();
-      delete task.user
-      delete task.userId
+      delete task.user;
+      delete task.userId;
       return task;
     } catch (e) {
-      delete task.user
-      delete task.userId
-      const message = `Could now save task from user: [${user.username}] with data: ${JSON.stringify(task)}`
-      this.logger.error(message)
-      throw new InternalServerErrorException(message)
+      delete task.user;
+      delete task.userId;
+      const message = `Could now save task from user: [${user.username}] with data: ${JSON.stringify(task)}`;
+      this.logger.error(message);
+      throw new InternalServerErrorException(message);
     }
-
-
 
   }
 
