@@ -23,8 +23,11 @@ export class TasksController {
   }
 
   @Get(':id')
-  byId(@Param('id', ParseUUIDPipe) id: string): Promise<Task> {
-    return this.tasksService.byId(id);
+  byId(
+    @Param('id', ParseUUIDPipe) id: string,
+    @GetUser() user: User
+  ): Promise<Task> {
+    return this.tasksService.byId(id, user);
   }
 
   @Post()
