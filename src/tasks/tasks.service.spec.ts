@@ -4,12 +4,15 @@ import { TaskRepository } from './task.repository';
 import { TaskFilteredRequest } from './dto/task-filtered-request';
 import { TaskStatus } from './task-status.enum';
 import { NotFoundException } from '@nestjs/common';
+import { TaskRequest } from './dto/task-request';
+import mock = jest.mock;
 
 const mockUser = { username: 'Mock User' };
 
 const mockTaskRepository = () => ({
   all: jest.fn(),
-  findOne: jest.fn()
+  findOne: jest.fn(),
+  persist: jest.fn(),
 });
 
 describe('TasksService', () => {
@@ -56,6 +59,24 @@ describe('TasksService', () => {
     it('should throw error as task does not exist', () => {
       taskRepository.findOne.mockRejectedValue(null);
       expect(tasksService.byId(1, mockUser)).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('create', () => {
+    it('should create a new task', async () => {
+      expect(taskRepository.persist).not.toHaveBeenCalled();
+
+      const mockTaskDto: TaskRequest = { title: 'Title!', description: 'Description!' };
+      taskRepository.persist.mockResolvedValue({
+        title: 'Title!', description: 'Description!', status: TaskStatus.OPEN,
+      });
+
+      const result = await tasksService.create(mockTaskDto, mockUser)
+
+      expect(taskRepository.persist).toHaveBeenCalledWith(mockTaskDto, mockUser)
+      expect(result.title).toBe(mockTaskDto.title)
+      expect(result.description).toBe(mockTaskDto.description)
+      expect(result.status).toBe(TaskStatus.OPEN)
     });
   });
 });
