@@ -5,7 +5,6 @@ import { TaskFilteredRequest } from './dto/task-filtered-request';
 import { TaskStatus } from './task-status.enum';
 import { NotFoundException } from '@nestjs/common';
 import { TaskRequest } from './dto/task-request';
-import mock = jest.mock;
 
 const mockUser = { username: 'Mock User' };
 
@@ -71,12 +70,12 @@ describe('TasksService', () => {
         title: 'Title!', description: 'Description!', status: TaskStatus.OPEN,
       });
 
-      const result = await tasksService.create(mockTaskDto, mockUser)
+      const result = await tasksService.create(mockTaskDto, mockUser);
 
-      expect(taskRepository.persist).toHaveBeenCalledWith(mockTaskDto, mockUser)
-      expect(result.title).toBe(mockTaskDto.title)
-      expect(result.description).toBe(mockTaskDto.description)
-      expect(result.status).toBe(TaskStatus.OPEN)
+      expect(taskRepository.persist).toHaveBeenCalledWith(mockTaskDto, mockUser);
+      expect(result.title).toBe(mockTaskDto.title);
+      expect(result.description).toBe(mockTaskDto.description);
+      expect(result.status).toBe(TaskStatus.OPEN);
     });
   });
 });
