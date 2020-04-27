@@ -11,6 +11,7 @@
 
 > Hi there!
 > I will update this repo with new information as soon as I build something cool 😅
+> **Update**: Course finished! 🥰 Now I just need to find a problem to be solved 🤔
 
 
 ## Sections 🤹🏻‍♂️
@@ -20,6 +21,7 @@
 - [X] Using persistence and queryBuilder([this tag](https://github.com/kammradt/learning-nestjs/tree/persistence-and-query-builder))
 - [X] Adding basic Jwt Authentication ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-basic-auth))
 - [X] Adding Authorization ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-authorization))
+- [X] Adding Tests with Jest ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-tests))
 
 ## Useful links 🔗
 
