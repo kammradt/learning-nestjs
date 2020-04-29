@@ -47,12 +47,8 @@ export class TaskRepository extends Repository<Task> {
 
     try {
       await task.save();
-      delete task.user;
-      delete task.userId;
       return task;
     } catch (e) {
-      delete task.user;
-      delete task.userId;
       const message = `Could now save task from user: [${user.username}] with data: ${JSON.stringify(task)}`;
       this.logger.error(message);
       throw new InternalServerErrorException(message);

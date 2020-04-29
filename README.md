@@ -22,6 +22,7 @@
 - [X] Adding basic Jwt Authentication ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-basic-auth))
 - [X] Adding Authorization ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-authorization))
 - [X] Adding Tests with Jest ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-tests))
+- [X] Adding secure responses (@Exclude instead of DTOs) ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-global-dto-solution))
 
 ## Useful links 🔗
 
@@ -29,6 +30,8 @@
 - `TypeORM` [here](https://typeorm.io/)
 - `queryBuilder` by `TypeORM` [here](https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md)
 - `queryBuilder with find { }` [here](https://github.com/typeorm/typeorm/blob/master/docs/find-options.md)
+- Using a `ClassSerializerInterceptor` to hide sensitive data (instead of ResponseDTOs) [here](https://docs.nestjs.com/techniques/serialization#exclude-properties)
+  - How to add it globally [here](https://stackoverflow.com/questions/55720448/nestjs-how-to-setup-classserializerinterceptor-as-global-interceptor)
 
 ## Stay in touch 🤗 👨🏻‍💻
 
