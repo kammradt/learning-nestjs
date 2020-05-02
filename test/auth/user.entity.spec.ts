@@ -1,4 +1,4 @@
-import { User } from './user.entity';
+import { User } from '../../src/auth/user.entity';
 import * as bcrypt from 'bcryptjs';
 import { doc } from 'prettier';
 import breakParent = doc.builders.breakParent;

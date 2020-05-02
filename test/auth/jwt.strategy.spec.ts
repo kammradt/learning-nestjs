@@ -1,7 +1,7 @@
-import { JwtStrategy } from './jwt.strategy';
-import { UserRepository } from '../user.repository';
+import { JwtStrategy } from '../../src/auth/config/jwt.strategy';
+import { UserRepository } from '../../src/auth/user.repository';
 import { Test } from '@nestjs/testing';
-import { User } from '../user.entity';
+import { User } from '../../src/auth/user.entity';
 
 const mockUserRepository = () => ({
   findByUsername: jest.fn(),
@@ -32,6 +32,6 @@ describe('JwtStrategy', () => {
       expect(userRepository.findByUsername).toHaveBeenCalledWith('usernameTest')
       expect(result.username).toBe(user.username)
     });
-    
+
   })
 });
