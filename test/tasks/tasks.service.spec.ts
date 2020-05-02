@@ -1,10 +1,10 @@
 import { Test } from '@nestjs/testing';
-import { TasksService } from './tasks.service';
-import { TaskRepository } from './task.repository';
-import { TaskFilteredRequest } from './dto/task-filtered-request';
-import { TaskStatus } from './task-status.enum';
+import { TasksService } from '../../src/tasks/tasks.service';
+import { TaskRepository } from '../../src/tasks/task.repository';
+import { TaskFilteredRequest } from '../../src/tasks/dto/task-filtered-request';
+import { TaskStatus } from '../../src/tasks/task-status.enum';
 import { NotFoundException } from '@nestjs/common';
-import { TaskRequest } from './dto/task-request';
+import { TaskRequest } from '../../src/tasks/dto/task-request';
 
 const mockUser = { username: 'Mock User' };
 
@@ -58,7 +58,7 @@ describe('TasksService', () => {
     });
 
     it('should throw error as task does not exist', () => {
-      taskRepository.findOne.mockRejectedValue(null);
+      taskRepository.findOne.mockResolvedValue(null);
       expect(tasksService.byId(1, mockUser)).rejects.toThrow(NotFoundException);
     });
   });
