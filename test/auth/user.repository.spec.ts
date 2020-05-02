@@ -1,8 +1,8 @@
-import { UserRepository } from './user.repository';
+import { UserRepository } from '../../src/auth/user.repository';
 import { Test } from '@nestjs/testing';
-import { AuthRequest } from './dto/auth-request';
+import { AuthRequest } from '../../src/auth/dto/auth-request';
 import { ConflictException, NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { User } from './user.entity';
+import { User } from '../../src/auth/user.entity';
 import * as bcrypt from 'bcryptjs'
 
 const mockAuthRequest: AuthRequest = {
