@@ -33,10 +33,11 @@ export class UsersService {
     }
   }
 
-  async updateRole(id: string, role: Role): Promise<void> {
+  async updateRole(id: string, role: Role): Promise<User> {
     const user = await this.byId(id);
     user.role = role;
     await user.save();
+    return user;
   }
 
 

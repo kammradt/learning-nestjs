@@ -37,7 +37,7 @@ export class UsersController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body('role', RoleValidationPipe) role: Role,
     @GetUser() user: User,
-  ): Promise<void> {
+  ): Promise<User> {
     this.logger.log(`User: [${user.username}] updating a Role of user with id: [${id} ]to role: [${role}]`);
     return this.userService.updateRole(id, role);
   }
