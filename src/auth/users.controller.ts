@@ -24,7 +24,11 @@ export class UsersController {
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseUUIDPipe) id: string) {
+  delete(
+    @Param('id', ParseUUIDPipe) id: string,
+    @GetUser() user: User,
+  ) {
+    this.logger.log(`User: [${user.username}] deleting a User with id: [${id}]`);
     return this.userService.delete(id);
   }
 
@@ -32,9 +36,9 @@ export class UsersController {
   updateRole(
     @Param('id', ParseUUIDPipe) id: string,
     @Body('role', RoleValidationPipe) role: Role,
-    @GetUser() user: User
+    @GetUser() user: User,
   ): Promise<void> {
-    this.logger.log(`User: [${user.username}] updating a Role of user with id: ${id} to role: ${role}`);
+    this.logger.log(`User: [${user.username}] updating a Role of user with id: [${id} ]to role: [${role}]`);
     return this.userService.updateRole(id, role);
   }
 
