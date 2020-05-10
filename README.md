@@ -23,6 +23,7 @@
 - [X] Adding Authorization ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-authorization))
 - [X] Adding Tests with Jest ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-tests))
 - [X] Adding secure responses (@Exclude instead of DTOs) ([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-global-dto-solution))
+- [X] Adding role based authorization (ADMIN section)([this tag](https://github.com/kammradt/learning-nestjs/tree/adding-role-based-authorization))
 
 ## Useful links 🔗
 
@@ -32,6 +33,9 @@
 - `queryBuilder with find { }` [here](https://github.com/typeorm/typeorm/blob/master/docs/find-options.md)
 - Using a `ClassSerializerInterceptor` to hide sensitive data (instead of ResponseDTOs) [here](https://docs.nestjs.com/techniques/serialization#exclude-properties)
   - How to add it globally [here](https://stackoverflow.com/questions/55720448/nestjs-how-to-setup-classserializerinterceptor-as-global-interceptor)
+- Using roles on handlers [here](https://docs.nestjs.com/guards#setting-roles-per-handler)
+  - More details can be found [here](https://docs.nestjs.com/fundamentals/execution-context#reflection-and-metadata).  
+  I chose the `.getAndOverride` approach, where a `Controller` level has a default `Role`, and some `actions (methods)` inside it can have more specific/restricted roles.
 
 ## Stay in touch 🤗 👨🏻‍💻
 

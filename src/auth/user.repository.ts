@@ -3,6 +3,7 @@ import { User } from './user.entity';
 import { AuthRequest } from './dto/auth-request';
 import * as bcrypt from 'bcryptjs';
 import { ConflictException, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Role } from './enum/role.enum';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -11,6 +12,7 @@ export class UserRepository extends Repository<User> {
 
     const user = this.create();
     user.username = username;
+    user.role = Role.REGULAR;
     user.salt = await bcrypt.genSalt();
     user.password = await this.hashPassword(password, user.salt);
 

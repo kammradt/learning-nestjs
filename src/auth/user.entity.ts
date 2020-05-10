@@ -1,6 +1,8 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Task } from '../tasks/task.entity';
+import { Role } from './enum/role.enum';
+import { Exclude } from 'class-transformer';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -12,11 +14,17 @@ export class User extends BaseEntity {
   username: string;
 
   @Column()
+  role: Role;
+
+  @Exclude()
+  @Column()
   password: string;
 
+  @Exclude()
   @Column()
   salt: string;
 
+  @Exclude()
   @OneToMany(type => Task, task => task.user, { eager: true })
   tasks: Task[];
 

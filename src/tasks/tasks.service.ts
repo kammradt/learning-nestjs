@@ -3,7 +3,7 @@ import { TaskRepository } from './task.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
 import { TaskRequest } from './dto/task-request';
-import { TaskStatus } from './task-status.enum';
+import { TaskStatus } from './enum/task-status.enum';
 import { TaskFilteredRequest } from './dto/task-filtered-request';
 import { User } from 'src/auth/user.entity';
 
