@@ -1,11 +1,11 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Logger, ValidationPipe, ClassSerializerInterceptor } from '@nestjs/common';
-import * as config from 'config'
+import { ClassSerializerInterceptor, Logger, ValidationPipe } from '@nestjs/common';
+import * as config from 'config';
 
 async function bootstrap() {
   const logger = new Logger('bootstrap');
-  const serverConfig = config.get('server')
+  const serverConfig = config.get('server');
   const port = process.env.PORT || serverConfig.port;
 
   const app = await NestFactory.create(AppModule);

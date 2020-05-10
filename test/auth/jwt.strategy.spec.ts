@@ -25,13 +25,13 @@ describe('JwtStrategy', () => {
   describe('validatePassword', () => {
     it('should return the User username', async () => {
       const user = new User();
-      user.username = 'usernameTest'
-      userRepository.findByUsername.mockResolvedValue(user)
+      user.username = 'usernameTest';
+      userRepository.findByUsername.mockResolvedValue(user);
 
-      const result = await jwtStrategy.validate({username: 'usernameTest'})
-      expect(userRepository.findByUsername).toHaveBeenCalledWith('usernameTest')
-      expect(result.username).toBe(user.username)
+      const result = await jwtStrategy.validate({ username: 'usernameTest' });
+      expect(userRepository.findByUsername).toHaveBeenCalledWith('usernameTest');
+      expect(result.username).toBe(user.username);
     });
 
-  })
+  });
 });

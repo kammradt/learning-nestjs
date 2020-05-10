@@ -19,7 +19,7 @@ export class UserRepository extends Repository<User> {
     try {
       await user.save();
     } catch (e) {
-      throw new ConflictException("Username should be unique")
+      throw new ConflictException('Username should be unique');
     }
   }
 

@@ -7,10 +7,10 @@ import { UserRepository } from './user.repository';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './config/jwt.strategy';
-import * as config from 'config'
+import * as config from 'config';
 import { UsersService } from './users.service';
 
-const { expiresIn, secret } = config.get('jwt')
+const { expiresIn, secret } = config.get('jwt');
 
 @Module({
   imports: [
