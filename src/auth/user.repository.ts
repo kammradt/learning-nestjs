@@ -3,7 +3,7 @@ import { User } from './user.entity';
 import { AuthRequest } from './dto/auth-request';
 import * as bcrypt from 'bcryptjs';
 import { ConflictException, NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { Role } from './role.enum';
+import { Role } from './enum/role.enum';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {

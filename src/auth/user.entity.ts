@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Task } from '../tasks/task.entity';
-import { Role } from './role.enum';
+import { Role } from './enum/role.enum';
 
 @Entity('users')
 export class User extends BaseEntity {

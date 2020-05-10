@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { TaskStatus } from './task-status.enum';
+import { TaskStatus } from './enum/task-status.enum';
 import { User } from '../auth/user.entity';
 import { Exclude } from 'class-transformer';
 
@@ -18,8 +18,7 @@ export class Task extends BaseEntity {
   @Column()
   status: TaskStatus;
 
-  @Exclude()
-  @ManyToOne(type => User, user => user.tasks, { eager: false })
+  @ManyToOne(type => User, user => user.tasks, { eager: false, onDelete: 'CASCADE' })
   user: User;
 
   @Exclude()

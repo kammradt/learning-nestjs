@@ -15,12 +15,17 @@ import { TasksService } from './tasks.service';
 import { Task } from './task.entity';
 import { TaskRequest } from './dto/task-request';
 import { TaskStatusValidationPipe } from './pipe/task-status-validation.pipe';
-import { TaskStatus } from './task-status.enum';
+import { TaskStatus } from './enum/task-status.enum';
 import { TaskFilteredRequest } from './dto/task-filtered-request';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from 'src/auth/user.entity';
-import { GetUser } from 'src/auth/get-user.decorator';
+import { GetUser } from 'src/auth/decorator/get-user.decorator';
+import { RolesGuard } from '../auth/guard/roles.guard';
+import { Roles } from '../auth/decorator/roles.decorator';
+import { Role } from '../auth/enum/role.enum';
 
+@UseGuards(RolesGuard)
+@Roles(Role.REGULAR)
 @UseGuards(AuthGuard())
 @Controller('tasks')
 export class TasksController {

@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { TasksService } from '../../src/tasks/tasks.service';
 import { TaskRepository } from '../../src/tasks/task.repository';
 import { TaskFilteredRequest } from '../../src/tasks/dto/task-filtered-request';
-import { TaskStatus } from '../../src/tasks/task-status.enum';
+import { TaskStatus } from '../../src/tasks/enum/task-status.enum';
 import { NotFoundException } from '@nestjs/common';
 import { TaskRequest } from '../../src/tasks/dto/task-request';
 
