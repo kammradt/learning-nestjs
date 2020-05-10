@@ -98,7 +98,7 @@ describe('UsersService', () => {
       const result = await userService.updateRole(mockUser0.id, Role.ADMIN);
       expect(userService.byId).toHaveBeenCalledWith(mockUser0.id);
       expect(save).toHaveBeenCalledTimes(1);
-      expect(result.role).toBe(Role.ADMIN)
+      expect(result.role).toBe(Role.ADMIN);
 
     });
   });

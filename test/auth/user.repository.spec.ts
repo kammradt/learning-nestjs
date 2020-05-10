@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { AuthRequest } from '../../src/auth/dto/auth-request';
 import { ConflictException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { User } from '../../src/auth/user.entity';
-import * as bcrypt from 'bcryptjs'
+import * as bcrypt from 'bcryptjs';
 
 const mockAuthRequest: AuthRequest = {
   username: 'Username',
@@ -61,28 +61,28 @@ describe('UserRepository', () => {
     it('should throw an exception if user not found', () => {
       userRepository.findOne.mockResolvedValue(null);
 
-      expect(userRepository.findByUsername(user.username)).rejects.toThrow(NotFoundException)
-      expect(user.hasCorrectPassword).not.toHaveBeenCalled()
+      expect(userRepository.findByUsername(user.username)).rejects.toThrow(NotFoundException);
+      expect(user.hasCorrectPassword).not.toHaveBeenCalled();
     });
 
     it('should throw an exception if password is wrong', () => {
       userRepository.findOne.mockResolvedValue(user);
-      user.hasCorrectPassword.mockResolvedValue(false)
+      user.hasCorrectPassword.mockResolvedValue(false);
 
-      expect(userRepository.validatePassword(mockAuthRequest)).rejects.toThrow(UnauthorizedException)
+      expect(userRepository.validatePassword(mockAuthRequest)).rejects.toThrow(UnauthorizedException);
     });
 
   });
 
   describe('hashPassword', () => {
     it('should calls bcrypt.hash and generate', async () => {
-      bcrypt.hash = jest.fn().mockResolvedValue('Hash!')
-      expect(bcrypt.hash).not.toHaveBeenCalled()
+      bcrypt.hash = jest.fn().mockResolvedValue('Hash!');
+      expect(bcrypt.hash).not.toHaveBeenCalled();
 
-      const result = await userRepository.hashPassword('pass', 'salt')
+      const result = await userRepository.hashPassword('pass', 'salt');
 
-      expect(bcrypt.hash).toHaveBeenCalledWith('pass', 'salt')
-      expect(result).toBe('Hash!')
+      expect(bcrypt.hash).toHaveBeenCalledWith('pass', 'salt');
+      expect(result).toBe('Hash!');
     });
   });
 });
